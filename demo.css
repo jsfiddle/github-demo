@@ -1,0 +1,10 @@
+$fullred = #ff0000;
+body {
+	font-family: Helvetica, Verdana
+}
+p {
+	padding: 7px 10px;
+}
+#demo { 
+	border: 1px solid $fullred;
+}
