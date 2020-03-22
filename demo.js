@@ -1,11 +1,15 @@
-window.addEvent('domready', function() {
-	new Request.HTML({
-		url: '/gh/get/response.html/jsfiddle/github-demo/contents',
-		data: {'delay': 1},
-		method: 'post',
-		update: 'demo',
-		onSuccess: function(response) {
-			$('demo').highlight();
+window.addEventListener('DOMContentLoaded', function() {
+	fetch('/gh/get/response.html/jsfiddle/github-demo/tree/master', {
+		headers: {
+			'X-Requested-With': 'XMLHttpRequest',
 		}
-	}).send();
+	})
+	.then(res => {
+		return res.text();
+	})
+	.then(html => {
+		$('#demo').html(html);
+	}).catch((error) => {
+		$('#demo').html(error);
+	})
 })
